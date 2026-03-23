@@ -1,17 +1,14 @@
-# core/data_fetcher.py - Modified to use sample data
-"""
-Fetch stock data from Yahoo Finance with fallback
-"""
-
+# core/data_fetcher.py - Simplified version
 import pandas as pd
 import numpy as np
-from datetime import datetime, timedelta
-import yfinance as yf
+import requests
 import time
-import random
+from datetime import datetime, timedelta
 
 class PortfolioDataFetcher:
-    """Fetch stock data from Yahoo Finance"""
+    """Fetch stock data from Alpha Vantage API"""
+    
+    API_KEY = "6YjOWCSt43mR2zKX26j72kNEqEDZYT5b"
     
     SECTORS = {
         'Technology': ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'META'],
@@ -33,25 +30,38 @@ class PortfolioDataFetcher:
         return cls.SECTORS
     
     @classmethod
-    def create_sample_data(cls, tickers, start_date, end_date):
-        """Create realistic sample data"""
-        print("   📊 Generating sample data...")
-        dates = pd.date_range(start_date, end_date, freq='D')
-        np.random.seed(42)
-        
-        sample_data = {}
-        for ticker in tickers[:10]:  # Limit to first 10 for performance
-            # Generate realistic price movements
-            returns = np.random.randn(len(dates)) * 0.02
-            price = 100 * np.exp(np.cumsum(returns))
-            sample_data[ticker] = price
-        
-        df = pd.DataFrame(sample_data, index=dates)
-        return df
+    def fetch_single_stock(cls, ticker):
+        """Fetch a single stock from Alpha Vantage"""
+        try:
+            url = "https://www.alphavantage.co/query"
+            params = {
+                'function': 'TIME_SERIES_DAILY',
+                'symbol': ticker,
+                'apikey': cls.API_KEY,
+                'outputsize': 'compact'  # 'compact' returns last 100 days
+            }
+            
+            response = requests.get(url, params=params)
+            data = response.json()
+            
+            if 'Time Series (Daily)' in data:
+                daily_data = data['Time Series (Daily)']
+                df = pd.DataFrame.from_dict(daily_data, orient='index')
+                df = df.astype(float)
+                df.index = pd.to_datetime(df.index)
+                df = df.sort_index()
+                return df['4. close']
+            else:
+                print(f"   {ticker}: No data - {data.get('Note', 'Unknown error')[:50]}")
+                return None
+                
+        except Exception as e:
+            print(f"   {ticker}: Error - {str(e)[:50]}")
+            return None
     
     @classmethod
     def fetch_data(cls, tickers=None, start_date=None, end_date=None):
-        """Fetch historical data with fallback to sample data"""
+        """Fetch historical data for multiple tickers"""
         
         if tickers is None:
             tickers = cls.get_all_tickers()
@@ -61,63 +71,49 @@ class PortfolioDataFetcher:
         if start_date is None:
             start_date = end_date - timedelta(days=2*365)
         
-        print(f"\n📊 Fetching data for {len(tickers)} stocks...")
+        print(f"\n📊 Fetching data from Alpha Vantage")
         print(f"   From: {start_date.strftime('%Y-%m-%d')}")
         print(f"   To:   {end_date.strftime('%Y-%m-%d')}")
         print("-" * 60)
         
-        # Try to fetch from Yahoo Finance
-        try:
-            # Use yfinance's batch download
-            data = yf.download(
-                tickers=tickers,
-                start=start_date,
-                end=end_date,
-                group_by='ticker',
-                auto_adjust=True,
-                progress=False,
-                threads=False
-            )
-            
-            if not data.empty:
-                # Extract close prices
-                if len(tickers) == 1:
-                    if 'Close' in data.columns:
-                        prices = data[['Close']].copy()
-                        prices.columns = tickers
-                    else:
-                        prices = data
-                else:
-                    try:
-                        if hasattr(data.columns, 'levels') and len(data.columns.levels) > 1:
-                            if 'Close' in data.columns.levels[1]:
-                                prices = data.xs('Close', axis=1, level=1)
-                            else:
-                                prices = data
-                        else:
-                            prices = data
-                    except:
-                        prices = data
-                
-                if isinstance(prices, pd.DataFrame) and not prices.empty:
-                    prices = prices.dropna(axis=1, how='all')
-                    if not prices.empty:
-                        print(f"✅ Loaded {len(prices.columns)} stocks from Yahoo Finance")
-                        return prices
-            
-            print("⚠️ Yahoo Finance data unavailable, using sample data")
-            
-        except Exception as e:
-            print(f"⚠️ Error fetching from Yahoo: {str(e)[:50]}")
+        max_stocks = min(len(tickers), 5)  # Start with 5 for testing
+        print(f"   Fetching {max_stocks} stocks")
         
-        # Use sample data as fallback
-        prices = cls.create_sample_data(tickers, start_date, end_date)
-        print(f"✅ Using sample data: {len(prices.columns)} stocks with {len(prices)} days")
-        return prices
+        data = {}
+        successful = 0
+        
+        for i, ticker in enumerate(tickers[:max_stocks]):
+            print(f"  [{i+1}/{max_stocks}] {ticker:6s}:", end=" ")
+            
+            prices = cls.fetch_single_stock(ticker)
+            
+            if prices is not None and not prices.empty:
+                # Filter by date range
+                mask = (prices.index >= pd.to_datetime(start_date)) & (prices.index <= pd.to_datetime(end_date))
+                prices = prices[mask]
+                
+                if not prices.empty:
+                    data[ticker] = prices
+                    successful += 1
+                    print(f"✓ ({len(prices)} days)")
+                else:
+                    print(f"✗ (no data in range)")
+            else:
+                print(f"✗")
+            
+            time.sleep(12)  # Rate limiting
+        
+        print("-" * 60)
+        print(f"✅ Loaded {successful}/{max_stocks} stocks")
+        
+        if successful == 0:
+            print("❌ No data retrieved")
+            return pd.DataFrame()
+        
+        return pd.DataFrame(data)
     
     @classmethod
     def calculate_returns(cls, prices):
-        """Calculate daily returns"""
         if prices.empty:
             return pd.DataFrame(), pd.DataFrame()
         
