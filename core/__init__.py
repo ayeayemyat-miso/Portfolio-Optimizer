@@ -1,8 +1,4 @@
 # core/__init__.py
-"""
-Core modules for portfolio optimization
-"""
-
 from core.data_fetcher import PortfolioDataFetcher
 from core.optimizer import PortfolioOptimizer
 from core.evaluator import PerformanceEvaluator
