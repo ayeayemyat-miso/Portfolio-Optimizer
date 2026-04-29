@@ -1,85 +1,154 @@
 # 📊 Smart Portfolio Optimizer
 
-A comprehensive interactive dashboard for portfolio optimization using Modern Portfolio Theory (Markowitz), active portfolio management (Treynor-Black), value stock screening, Monte Carlo simulation, and portfolio comparison.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://portfolio-optimizer-k62kg4m6pfmybapp75smp8b.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 
-## 🚀 Features
+## 🚀 Live Demo
 
-### 1. **Markowitz Portfolio Optimization (Passive)**
-- Efficient frontier visualization with optimal portfolio
-- Multiple optimization goals:
+**Try it now:** [https://portfolio-optimizer-k62kg4m6pfmybapp75smp8b.streamlit.app/](https://portfolio-optimizer-k62kg4m6pfmybapp75smp8b.streamlit.app/)
+
+> ⚡ **Note:** The first load may take 10-15 seconds as the app wakes up from free tier.
+
+## 📖 About
+
+Smart Portfolio Optimizer is a comprehensive investment analysis tool that helps you build optimal portfolios using **Modern Portfolio Theory** (Markowitz) and **Active Management** (Treynor-Black). Built with Streamlit and Yahoo Finance data.
+
+### 🎯 Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **📊 Markowitz Optimization** | Efficient frontier, optimal weights, Sharpe ratio maximization |
+| **📈 Treynor-Black Model** | Alpha/Beta analysis with statistical significance testing |
+| **💰 Value Screener** | Multi-factor stock scoring (P/E, P/B, momentum, dividend) |
+| **🔄 Monte Carlo Simulation** | 1,000+ scenarios for risk analysis |
+| **⚖️ Strategy Comparison** | Compare Sharpe, Equal Weight, and Min Volatility |
+| **🎯 Risk Analysis** | Portfolio beta gauge, position sizing, stress tests |
+
+## 📸 Dashboard Preview
+
+### Markowitz Portfolio Analysis
+![Markowitz Tab](https://via.placeholder.com/800x400?text=Efficient+Frontier+Chart)
+
+*Efficient frontier visualization with optimal portfolio selection*
+
+### Treynor-Black Active Model
+![Treynor-Black Tab](https://via.placeholder.com/800x400?text=Alpha+Beta+Table)
+
+*Alpha and Beta calculation with Yahoo Finance comparison*
+
+### Value Stock Screener
+![Value Screener](https://via.placeholder.com/800x400?text=Value+Screener+Table)
+
+*Multi-factor scoring system for stock valuation*
+
+### Portfolio Risk Analysis
+![Risk Analysis](https://via.placeholder.com/800x400?text=Risk+Gauge+Chart)
+
+*Portfolio beta gauge and position sizing recommendations*
+
+## ✨ Features in Detail
+
+### 1. 📊 Markowitz Portfolio Optimization
+- **Efficient Frontier** - Visualize optimal risk-return combinations
+- **Multiple Optimization Goals**
   - Maximum Sharpe Ratio (best risk-adjusted returns)
   - Minimum Volatility (safest portfolio)
-  - Target Return (8%, 10%, 12%)
+  - Target Return (6%, 8%, 10%, 12%, 15%, 20%)
   - Equal Weight (diversification benchmark)
-- Comprehensive performance metrics:
-  - Annualized Return & Volatility
+- **Performance Metrics**
+  - Expected Annual Return & Volatility
   - Sharpe & Sortino Ratios
   - Maximum Drawdown & Calmar Ratio
-  - **Value at Risk (VaR 95% & 99%)**
-  - **Conditional Value at Risk (CVaR 95%)**
+  - Value at Risk (VaR 95% & 99%)
+  - Conditional Value at Risk (CVaR)
   - Skewness & Kurtosis
-- Rolling Sharpe ratio (3-month window)
-- Sector allocation pie chart
-- Cumulative returns vs benchmark
+- **Rolling Sharpe Ratio** (63-day window)
+- **Sector Allocation** pie chart
 
-### 2. **Treynor-Black Active Portfolio**
-- Calculates alpha and beta for each selected stock
-- Identifies stocks with statistically significant alpha (p-value < 0.10)
-- Builds active portfolio weighted by alpha/residual variance
-- Combines active bets with passive market portfolio
-- Shows active weights and final combined portfolio
-- Performance metrics for active strategy
+### 2. 📈 Treynor-Black Active Model
+- **Alpha Calculation** - Identify stocks outperforming benchmark
+- **Beta Analysis** - Measure volatility relative to market
+- **Statistical Significance** - p-value testing (90% confidence)
+- **Comparison with Yahoo Finance** - Validate your calculations
+- **Investment Insights** - Overweight/underweight recommendations
 
-### 3. **Value Stock Screener**
-- Multi-factor scoring system:
+### 3. 💰 Value Stock Screener
+- **Multi-Factor Scoring (1-10 scale)**
   - P/E Ratio (value factor)
   - P/B Ratio (value factor)
-  - Historical returns (momentum)
+  - Historical Returns (momentum)
   - Volatility (risk factor)
-  - Dividend yield (income factor)
-- Color-coded recommendations:
-  - 🟢 Strong Buy (7+ points)
+  - Dividend Yield (income factor)
+- **Color-Coded Recommendations**
+  - 🟢 Strong Buy (7-10 points)
   - 🟡 Buy (5-6 points)
   - 🟠 Hold (3-4 points)
   - 🔴 Sell (0-2 points)
-- Correlation heatmap for selected value stocks
 
-### 4. **Monte Carlo Simulation**
-- 1,000 simulations over 1-year horizon
-- Distribution of final portfolio values
-- 95% confidence intervals
-- Sample paths visualization
-- Key risk metrics:
-  - Mean and median final values
+### 4. 🔄 Monte Carlo Simulation
+- **1,000 simulations** over 1-year horizon
+- **Distribution visualization** of final portfolio values
+- **Risk Metrics**
+  - Mean & Median final values
   - VaR at 95% and 99% confidence
   - Probability of loss
-  - Probability of significant gains (20%+)
+  - Probability of 20%+ gains
 
-### 5. **Portfolio Comparison**
-- Compare three strategies side-by-side:
-  - Your selected optimization goal
-  - Equal weight portfolio
-  - Minimum volatility portfolio
-- Cumulative returns comparison
-- Performance metrics table
-- Risk metrics comparison (VaR, CVaR)
+### 5. ⚖️ Strategy Comparison
+Compare three portfolio strategies side-by-side:
+- Your optimized portfolio (based on selected goal)
+- Equal weight portfolio
+- Minimum volatility portfolio
 
-### 6. **Additional Features**
-- Custom ticker addition
-- Download portfolio weights as CSV
-- Download performance metrics as CSV
-- Interactive controls with real-time updates
-- Responsive design with animations
+### 6. 🎯 Risk Analysis
+- **Portfolio Beta Gauge** - Visual risk meter
+- **Investor Profile Questionnaire**
+  - Age-based adjustments
+  - Investment horizon
+  - Risk tolerance
+  - Loss tolerance
+- **Position Sizing Recommendations**
+  - Overweight/underweight suggestions
+  - Reason-based recommendations
+- **Stress Test** - Portfolio impact under market scenarios (-20% to +20%)
 
-## 📋 Requirements
+## 🛠️ Technology Stack
 
-- Python 3.8 or higher
-- Internet connection (for Yahoo Finance data)
+| Technology | Purpose |
+|------------|---------|
+| **Streamlit** | Web application framework |
+| **Python 3.12+** | Programming language |
+| **Yahoo Finance** | Stock price data |
+| **Plotly** | Interactive visualizations |
+| **Pandas/NumPy** | Data manipulation |
+| **SciPy** | Statistical calculations |
+| **OpenPyXL** | Excel report generation |
 
-## 🛠️ Installation
+## 📦 Installation
 
-### 1. Clone the repository
+### Prerequisites
+- Python 3.12 or higher
+- pip package manager
+
+### Local Setup
 
 ```bash
-git clone https://github.com/ayeayemyat-miso/smart-portfolio-optimizer
-cd smart-portfolio-optimizer
+# Clone the repository
+git clone https://github.com/ayeayemyat-miso/Portfolio-Optimizer.git
+cd Portfolio-Optimizer
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+streamlit run streamlit_app.py
