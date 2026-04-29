@@ -28,8 +28,7 @@ Smart Portfolio Optimizer is a comprehensive investment analysis tool that helps
 ## 📸 Dashboard Preview
 
 ### Markowitz Portfolio Analysis
-![Markowitz Tab](<img width="664" height="401" alt="image" src="https://github.com/user-attachments/assets/9b3f5dc9-0cff-493b-ad00-3c1c5e1cba11" />
-)
+<img width="662" height="400" alt="image" src="https://github.com/user-attachments/assets/c35d5d73-f04f-4b28-8544-f21f51d22394" />
 
 *Efficient frontier visualization with optimal portfolio selection*
 
