@@ -1,4 +1,4 @@
-# 📊 Portfolio Optimizer
+# 📊 Smart Portfolio Optimizer
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://portfolio-optimizer-k62kg4m6pfmybapp75smp8b.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
