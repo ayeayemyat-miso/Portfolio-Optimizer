@@ -1,0 +1,31 @@
+@"
+# Virtual Environment
+venv/
+env/
+ENV/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and data
+*.log
+*.csv
+*.xlsx
+data/cache/
+
+# Streamlit
+.streamlit/secrets.toml
+"@ | Out-File -FilePath .gitignore -Encoding utf8
