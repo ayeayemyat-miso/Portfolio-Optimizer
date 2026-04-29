@@ -28,22 +28,26 @@ Smart Portfolio Optimizer is a comprehensive investment analysis tool that helps
 ## 📸 Dashboard Preview
 
 ### Markowitz Portfolio Analysis
-![Markowitz Tab](https://via.placeholder.com/800x400?text=Efficient+Frontier+Chart)
+![Markowitz Tab](<img width="664" height="401" alt="image" src="https://github.com/user-attachments/assets/9b3f5dc9-0cff-493b-ad00-3c1c5e1cba11" />
+)
 
 *Efficient frontier visualization with optimal portfolio selection*
 
 ### Treynor-Black Active Model
-![Treynor-Black Tab](https://via.placeholder.com/800x400?text=Alpha+Beta+Table)
+![Treynor-Black Tab](<img width="633" height="110" alt="image" src="https://github.com/user-attachments/assets/ded811b1-d1d5-4468-8502-47590cc05226" />
+)
 
 *Alpha and Beta calculation with Yahoo Finance comparison*
 
 ### Value Stock Screener
-![Value Screener](https://via.placeholder.com/800x400?text=Value+Screener+Table)
+![Value Screener](<img width="662" height="318" alt="image" src="https://github.com/user-attachments/assets/36a4046a-a906-49c6-8522-5af9d9718bcc" />
+)
 
 *Multi-factor scoring system for stock valuation*
 
 ### Portfolio Risk Analysis
-![Risk Analysis](https://via.placeholder.com/800x400?text=Risk+Gauge+Chart)
+![Risk Analysis](<img width="704" height="347" alt="image" src="https://github.com/user-attachments/assets/4dcd1cca-ce78-406b-abf9-60afe6a3d639" />
+)
 
 *Portfolio beta gauge and position sizing recommendations*
 
