@@ -33,20 +33,19 @@ Smart Portfolio Optimizer is a comprehensive investment analysis tool that helps
 *Efficient frontier visualization with optimal portfolio selection*
 
 ### Treynor-Black Active Model
-![Treynor-Black Tab](<img width="633" height="110" alt="image" src="https://github.com/user-attachments/assets/ded811b1-d1d5-4468-8502-47590cc05226" />
-)
+<img width="610" height="271" alt="image" src="https://github.com/user-attachments/assets/0daf34fa-7b75-41b8-8d93-85fc96bed581" />
+
 
 *Alpha and Beta calculation with Yahoo Finance comparison*
 
 ### Value Stock Screener
-![Value Screener](<img width="662" height="318" alt="image" src="https://github.com/user-attachments/assets/36a4046a-a906-49c6-8522-5af9d9718bcc" />
-)
+<img width="613" height="355" alt="image" src="https://github.com/user-attachments/assets/536331c2-b625-4a60-afd1-30ac7b2a9e59" />
+
 
 *Multi-factor scoring system for stock valuation*
 
 ### Portfolio Risk Analysis
-![Risk Analysis](<img width="704" height="347" alt="image" src="https://github.com/user-attachments/assets/4dcd1cca-ce78-406b-abf9-60afe6a3d639" />
-)
+<img width="647" height="402" alt="image" src="https://github.com/user-attachments/assets/3c215183-4f4f-4020-adc9-16e86fab5181" />
 
 *Portfolio beta gauge and position sizing recommendations*
 
